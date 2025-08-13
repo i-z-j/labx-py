@@ -42,6 +42,15 @@ class TestClientMethods(unittest.TestCase):
         labx.connect()
 
     @patch("labx.client.httpx.Client.get")
+    def test_profiles(self, mock_get):
+        mock_get.return_value = self.mock_response
+
+        profiles = labx.profiles()
+
+        self.assertEqual(profiles, {"outputs": ["output1", "output2"]})
+        mock_get.assert_called_once_with(f"{labx.DEFAULT_LABX_URL}/profiles")
+
+    @patch("labx.client.httpx.Client.get")
     def test_tasks(self, mock_get):
         mock_get.return_value = self.mock_response
 

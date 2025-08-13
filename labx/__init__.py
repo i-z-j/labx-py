@@ -6,9 +6,10 @@ so users can simply call:
 
     import labx
     labx.connect()
-    labx.run(...)
-    labx.tasks()
     labx.connected()
+    labx.profiles()
+    labx.tasks()
+    labx.run(...)
 
 without needing to manage LabxClient directly.
 """
@@ -20,7 +21,7 @@ _client = LabxClient()
 
 # Methods
 # Public API methods bound to the singleton
-for name in ("connect", "tasks", "run"):
+for name in ("connect", "profiles", "tasks", "run"):
     globals()[name] = getattr(_client, name)
 
 # State
@@ -31,6 +32,7 @@ def connected():
 __all__ = [
     "DEFAULT_LABX_URL",
     "connect",
+    "profiles",
     "tasks",
     "run",
 ]
