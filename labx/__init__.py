@@ -10,6 +10,8 @@ so users can simply call:
     labx.profiles()
     labx.tasks()
     labx.run(...)
+    labx.status(...)
+    labx.output(...)
 
 without needing to manage LabxClient directly.
 """
@@ -21,7 +23,8 @@ _client = LabxClient()
 
 # Methods
 # Public API methods bound to the singleton
-for name in ("connect", "profiles", "tasks", "run"):
+for name in ("connect", "profiles", "tasks",
+             "run", "status", "output"):
     globals()[name] = getattr(_client, name)
 
 # State
@@ -35,4 +38,6 @@ __all__ = [
     "profiles",
     "tasks",
     "run",
+    "status",
+    "output",
 ]
