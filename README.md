@@ -35,5 +35,15 @@ params = [
     {"img_url": "url1", "resol": 0},
     {"img_url": "url2", "resol": 0},
 ]
-results = labx.run("my_task", cluster_cfg, params)
+run_id = labx.run("my_task", cluster_cfg, params)
+
+import time
+while "running" == labx.status(run_id):
+    time.sleep(60)
+    print(f"Task {run_id} is running ...")
+status = labx.status(run_id)
+if "failed" == status:
+    print(labx.output(run_id).error)
+elif "completed" == status:
+    results = labx.output(run_id).results
 ```

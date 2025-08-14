@@ -44,13 +44,45 @@ class LabxClient:
             print(f"Tasks request failed: {e}")
             return None
 
-    def run(self, task_name: str, cluster_cfg: dict, params: list):
+    def run(self, task_name:str, cluster_cfg:dict, params:list):
         if not self.connected:
             raise RuntimeError("Not connected to the Labx server.")
         try:
             response = self.client.post(
                 f"{self.url}/run",
                 json={"task_name": task_name, "cluster_cfg": cluster_cfg, "params": params},
+            )
+            response.raise_for_status()
+            return response.text
+        except httpx.HTTPError as e:
+            print(f"Run request failed: {e}")
+            return None
+
+    def status(self, run_id:str):
+        if not self.connected:
+            raise RuntimeError("Not connected to the Labx server.")
+        try:
+            response = self.client.post(
+                f"{self.url}/status",
+                json={
+                    "run_id": run_id,
+                },
+            )
+            response.raise_for_status()
+            return response.text
+        except httpx.HTTPError as e:
+            print(f"Run request failed: {e}")
+            return None
+
+    def output(self, run_id:str):
+        if not self.connected:
+            raise RuntimeError("Not connected to the Labx server.")
+        try:
+            response = self.client.post(
+                f"{self.url}/output",
+                json={
+                    "run_id": run_id,
+                },
             )
             response.raise_for_status()
             return response.json()
