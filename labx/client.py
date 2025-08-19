@@ -1,7 +1,7 @@
 import os
 import httpx
 
-DEFAULT_LABX_URL = os.getenv("LABX_URL", "http://labx.labx.svc.cluster.local:80")
+DEFAULT_LABX_URL = os.getenv("LABX_URL", "http://labx-manager.labx.svc.cluster.local")
 
 class LabxClient:
 
