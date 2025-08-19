@@ -11,7 +11,7 @@ class TestConnect(unittest.TestCase):
     def setUp(self):
         self.mock_response = MagicMock()
         self.mock_response.raise_for_status.return_value = None
-        self.mock_response.text = "Connected to Labx."
+        self.mock_response.text = "Connected to Labx.\n"
 
     @patch("labx.client.httpx.Client.get")
     def test_connect(self, mock_get):
@@ -19,7 +19,7 @@ class TestConnect(unittest.TestCase):
 
         res = labx.connect()
 
-        self.assertEqual(res, "Connected to Labx.")
+        self.assertEqual(res, "Connected to Labx.\n")
         self.assertTrue(labx.connected())
         mock_get.assert_called_once_with(labx.DEFAULT_LABX_URL)
 
@@ -29,7 +29,7 @@ class TestConnect(unittest.TestCase):
 
         res = labx.connect("http://fake-url")
 
-        self.assertEqual(res, "Connected to Labx.")
+        self.assertEqual(res, "Connected to Labx.\n")
         self.assertTrue(labx.connected())
         mock_get.assert_called_once_with("http://fake-url")
 
