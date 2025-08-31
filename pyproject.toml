@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "labx-py"
+version = "2025.8.5"
+description = "Labx Python Client"
+authors = [
+    { name = "Zi-Jian Yi (伊子健)", email = "arrowzeke@gmail.com" },
+]
+readme = "README.md"
+license = { text = "GPL" }
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+]
+requires-python = ">=3.12"
+dependencies = [
+  "httpx>=0.28.1",
+  "pydantic>=2.11.7",
+]
+keywords = ["labx","labserver"]
+
+[project.urls]
+Repository = "https://github.com/i-z-j/labx-py"
