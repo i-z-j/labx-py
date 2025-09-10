@@ -193,7 +193,7 @@ def test_status(connect, mock_post, sample_status):
 def sample_output():
     return {
         "errors": [None, "Redis Error..."],
-        "results": [{"result_url": "url1"}, None],
+        "results": ['{"result_url": "url1"}', None],
     }
 
 def test_output(connect, mock_post, sample_output):

@@ -39,7 +39,7 @@ class RunStatus(BaseModel):
 
 class RunOutput(BaseModel):
     errors    : List[Optional[str]]
-    results   : List[Optional[Dict[str, Any]]]
+    results   : List[Optional[str]]
 
 
 # ----- Global configuration -----

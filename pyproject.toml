@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "labx-py"
-version = "2025.8.5.post1"
+version = "2025.9.2"
 description = "Labx Python Client"
 authors = [
     { name = "Zi-Jian Yi (伊子健)", email = "arrowzeke@gmail.com" },
